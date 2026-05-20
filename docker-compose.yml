@@ -1,0 +1,22 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: insider-one-champions-league:latest
+    container_name: insider-one-champions-league-app-by-md
+    ports:
+      - "8000:8000"
+    environment:
+      APP_NAME: Insider One Champions League by MD
+      APP_ENV: local
+      APP_DEBUG: "true"
+      APP_URL: http://localhost:8000
+      APP_KEY: ${APP_KEY:-}
+      DB_CONNECTION: sqlite
+      DB_DATABASE: /sqlite/database.sqlite
+    volumes:
+      - sqlite_data:/sqlite
+
+volumes:
+  sqlite_data:

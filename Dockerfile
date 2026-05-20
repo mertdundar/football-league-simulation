@@ -47,10 +47,8 @@ RUN rm -f public/hot \
 RUN vendor/bin/phpunit
 EXPOSE 8000
 
-# Generate APP_KEY and ensure SQLite volume file exists. If so; migrate, seed, and serve
-CMD : "${APP_KEY:=base64:$(php -r 'echo base64_encode(random_bytes(32));')}" \
- && export APP_KEY \
- && mkdir -p /sqlite && touch /sqlite/database.sqlite \
+# Ensure SQLite volume file exists. If so; migrate, seed, and serve
+CMD mkdir -p /sqlite && touch /sqlite/database.sqlite \
  && php artisan migrate --force --graceful \
  && php artisan db:seed --force \
  && php artisan serve --host=0.0.0.0 --port=8000 2>&1 \

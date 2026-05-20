@@ -4,8 +4,10 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "build:ssr": "vite build && vite build --ssr",
-        "dev": "vite"
+        "dev": "vite",
+        "test:backend": "docker compose run --rm --no-deps app vendor/bin/phpunit",
+        "test:frontend": "vitest run",
+        "test": "npm run test:backend && npm run test:frontend"
     },
     "dependencies": {
         "pinia": "^2.2.0",

@@ -53,4 +53,6 @@ CMD : "${APP_KEY:=base64:$(php -r 'echo base64_encode(random_bytes(32));')}" \
  && mkdir -p /sqlite && touch /sqlite/database.sqlite \
  && php artisan migrate --force --graceful \
  && php artisan db:seed --force \
- && php artisan serve --host=0.0.0.0 --port=8000
+ && php artisan serve --host=0.0.0.0 --port=8000 2>&1 \
+    | awk '{ gsub(/0\.0\.0\.0/, "127.0.0.1"); print; fflush() }'
+# Small trick at the end to make sure end-user does not try to reach 0.0.0.0

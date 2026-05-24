@@ -1,8 +1,8 @@
 # Football League Simulation
 
 A 4-team (statically-coded with team strengths within their names for case purposes) football league simulation. Generate fixtures, play matches week by week
-(or all at once as bonus), see the weekly fixture (and edit any match results as bonus), watch the league table update, and see each team's championship
-odds from week 4 onward. Built with Laravel (PHP 8.5) and Vue.js (Vue 3 + JavaScript), and SQLite as persistent SQL database (even though it was not expected) runs in a single
+(or all at once), see the weekly fixture (and edit any match results), watch the league table update, and see each team's championship
+odds from week 4 onward. Built with Laravel (PHP 8.5) and Vue.js (Vue 3 + JavaScript), and SQLite as persistent SQL database. Runs in a single
 Docker container.
 
 ## Requirements
